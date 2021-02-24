@@ -39,6 +39,10 @@ require_once "../config.inc.php";
         </div>
     </nav>
 
+<?php
+
+new HomeController();
+?>
 </body>
 <footer class="border-top footer text-muted">
     <div class="container">
