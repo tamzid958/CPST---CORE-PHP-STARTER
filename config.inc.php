@@ -9,6 +9,8 @@ $DEVELOPMENT_MODE = true;
 $HTACCESS_ENABLED = false;
 
 if ($DEVELOPMENT_MODE) {
+    error_reporting(E_ALL);
+
     $SERVER_NAME = "localhost";
     $SERVER_USER_NAME = "root";
     $SERVER_PASSWORD = "";
@@ -50,17 +52,10 @@ $WWWROOT_JS = array(
 );
 $IMG_PATH = "wwwroot/images/";
 
-
-$CONTROLLER = "controller/CoreController.php";
-$MODEL = "model/CoreModel.php";
-$ROUTE = "route/route.php";
-$DBCONTEXT = ($DEVELOPMENT_MODE) ? "data/DBcontext.dev.php" : "data/DBcontext.pro.php";
-
-
-require_once $ROUTE;
-require_once $DBCONTEXT;
-require_once $MODEL;
-require_once $CONTROLLER;
+require_once "route/route.php";
+require_once ($DEVELOPMENT_MODE) ? "data/DBcontext.dev.php" : "data/DBcontext.pro.php";
+require_once "model/CoreModel.php";
+require_once "controller/CoreController.php";
 
 
 $NAV_ACTIVE = $PAGE_TITLE = basename($_SERVER['REQUEST_URI']);
