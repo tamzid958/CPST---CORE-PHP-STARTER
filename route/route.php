@@ -4,11 +4,21 @@ $pages_array = array(
     'index' => array(
         'slug' => 'index',
         'title' => 'Home',
-        'template' => 'Static'
     ),
     'about' => array(
         'slug' => 'about',
         'title' => 'About',
-        'template' => 'Static'
+    ),
+    'login' => array(
+        'slug' => 'login',
+        'title' => 'Login',
+    ),
+    'register' => array(
+        'slug' => 'register',
+        'title' => 'Register',
+    ),
+    'dashboard' => array(
+        'slug' => 'dashboard',
+        'title' => 'Dashboard',
     ),
 );

@@ -37,7 +37,10 @@ require_once "./config.inc.php";
                         <a class="nav-link  <?php echo ($nav_active == $pages_array["about"]["slug"]) ? 'active' : '' ?>" href="<?php echo $pages_array["about"]["slug"] ?>">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        <a class="nav-link  <?php echo ($nav_active == $pages_array["login"]["slug"]) ? 'active' : '' ?>" href="<?php echo $pages_array["login"]["slug"] ?>">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  <?php echo ($nav_active == $pages_array["register"]["slug"]) ? 'active' : '' ?>" href="<?php echo $pages_array["register"]["slug"] ?>">Register</a>
                     </li>
                 </ul>
             </div>

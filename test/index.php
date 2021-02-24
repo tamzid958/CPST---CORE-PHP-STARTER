@@ -31,21 +31,12 @@ require_once "../config.inc.php";
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../index">Home</a>
+                        <a class="nav-link active" aria-current="page" href="../">Home</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-
-
-
-    <div class="container">
-        <?php
-        $homeController = new HomeController();
-        $users = $homeController->createUser();
-        ?>
-    </div>
 
 </body>
 <footer class="border-top footer text-muted">
