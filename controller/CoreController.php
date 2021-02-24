@@ -1,6 +1,8 @@
 <?php
-$files = dirname(__FILE__);
-
+$files = basename(__DIR__);
 foreach (glob($files . '/*.php') as $file) {
-    require_once $file;
+    $file = explode('/', $file)[1];
+    if ($file != "CoreController.php") {
+        require_once $file;
+    }
 }
