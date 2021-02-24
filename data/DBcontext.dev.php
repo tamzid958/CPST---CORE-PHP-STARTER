@@ -10,15 +10,15 @@ class DBcontext
 
 
     //before production create a copy of this file, inside this folder and replace null with your own database connection variable//
-    //rename it to DBcontext.pro.php and inside config.inc.php set  $PRODUCTION_MODE=false
+    //rename that file DBcontext.pro.php and inside config.inc.php set  $DEVELOPMENT_MODE=false
     public function __construct($dbhost = null, $dbuser = null, $dbpass = null, $dbname = null, $charset = 'utf8')
     {
-        //remove this block before production//
+        //remove this block before production in DBcontext.pro.php//
         $dbhost = $GLOBALS["SERVER_NAME"];
         $dbuser = $GLOBALS["SERVER_USER_NAME"];
         $dbpass = $GLOBALS["SERVER_PASSWORD"];
         $dbname = $GLOBALS["DATABASE_NAME"];
-        //remove this block before production//
+        //remove this block before production in DBcontext.pro.php//
 
 
         $this->connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
