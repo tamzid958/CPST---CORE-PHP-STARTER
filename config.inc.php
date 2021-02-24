@@ -15,6 +15,8 @@ if ($DEVELOPMENT_MODE) {
     $SERVER_USER_NAME = "root";
     $SERVER_PASSWORD = "";
     $DATABASE_NAME = "greenlife";
+} else {
+    error_reporting(0);
 }
 
 $CSS_FRAMEWORKS = array(
