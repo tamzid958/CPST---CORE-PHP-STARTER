@@ -47,3 +47,11 @@ require_once $DBCONTEXT;
 require_once $MODEL;
 require_once $CONTROLLER;
 require_once $ROUTE;
+
+
+$nav_active = $title = basename($_SERVER['REQUEST_URI']);
+foreach ($pages_array as $page) {
+    if ($page["slug"] == $title) {
+        $title = $page["title"];
+    }
+}

@@ -1,12 +1,5 @@
 <?php
 require_once "./config.inc.php";
-
-$title = basename($_SERVER['REQUEST_URI']);
-foreach ($pages_array as $page) {
-    if ($page["slug"] == $title) {
-        $title = $page["title"];
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,10 +31,10 @@ foreach ($pages_array as $page) {
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo $pages_array["index"]["slug"] ?>">Home</a>
+                        <a class="nav-link <?php echo ($nav_active == $pages_array["index"]["slug"]) ? 'active' : '' ?>" href="<?php echo $pages_array["index"]["slug"] ?>">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo $pages_array["about"]["slug"] ?>">About</a>
+                        <a class="nav-link  <?php echo ($nav_active == $pages_array["about"]["slug"]) ? 'active' : '' ?>" href="<?php echo $pages_array["about"]["slug"] ?>">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
