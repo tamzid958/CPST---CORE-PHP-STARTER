@@ -8,7 +8,9 @@ class DBcontext
     protected $query_closed = TRUE;
     public $query_count = 0;
 
-    public function __construct($dbhost = 'localhost', $dbuser = 'root', $dbpass = '', $dbname = 'greenlife', $charset = 'utf8')
+    //change null with your own database details
+
+    public function __construct($dbhost = null, $dbuser = null, $dbpass = null, $dbname = null, $charset = 'utf8')
     {
         $this->connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
         if ($this->connection->connect_error) {

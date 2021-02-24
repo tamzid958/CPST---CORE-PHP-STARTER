@@ -8,8 +8,13 @@ class DBcontext
     protected $query_closed = TRUE;
     public $query_count = 0;
 
-    public function __construct($dbhost = 'localhost', $dbuser = 'root', $dbpass = '', $dbname = 'greenlife', $charset = 'utf8')
+    public function __construct($dbhost = null, $dbuser = null, $dbpass = null, $dbname = null, $charset = 'utf8')
     {
+        $dbhost = $GLOBALS["SERVER_NAME"];
+        $dbuser = $GLOBALS["SERVER_USER_NAME"];
+        $dbpass = $GLOBALS["SERVER_PASSWORD"];
+        $dbname = $GLOBALS["DATABASE_NAME"];
+
         $this->connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
         if ($this->connection->connect_error) {
             $this->error('Failed to connect to MySQL - ' . $this->connection->connect_error);
