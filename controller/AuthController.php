@@ -37,7 +37,7 @@ class AuthController extends DBcontext
     {
         $current_user_token = $_COOKIE["ackqwtoken"];
 
-        $query = "SELECT * from `users` WHERE `token` = $current_user_token";
+        $query = "SELECT * from `users` WHERE `token` = '$current_user_token' ";
 
         $current_user = parent::query($query)->fetchArray();
 
