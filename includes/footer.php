@@ -9,9 +9,10 @@
 foreach ($JS_FRAMEWORKS as $JS) {
     echo "<script src='" . $JS["url"] . "' integrity='" . $JS["integrity"] . "' crossorigin='" . $JS["crossorigin"] . "'></script>";
 }
-
+foreach ($WWWROOT_JS as $JS) {
+    echo "<script src='$JS'></script>";
+}
 ?>
-<script src="<?php echo $JS_PATH ?>"></script>
 </main>
 
 </html>

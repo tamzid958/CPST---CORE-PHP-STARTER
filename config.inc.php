@@ -38,8 +38,13 @@ $JS_FRAMEWORKS = array(
     )
 );
 
-$CSS_PATH = "wwwroot/css/stylesheet.css";
-$JS_PATH = "wwwroot/scripts/app.js";
+$WWWROOT_CSS = array(
+    "wwwroot/css/stylesheet.css"
+);
+
+$WWWROOT_JS = array(
+    "wwwroot/scripts/app.js"
+);
 $IMG_PATH = "wwwroot/images/";
 
 
@@ -54,9 +59,9 @@ require_once $MODEL;
 require_once $CONTROLLER;
 
 
-$nav_active = $title = basename($_SERVER['REQUEST_URI']);
+$NAV_ACTIVE = $PAGE_TITLE = basename($_SERVER['REQUEST_URI']);
 foreach ($pages_array as $page) {
-    if ($page["slug"] == $title) {
-        $title = $page["title"];
+    if ($page["slug"] == $PAGE_TITLE) {
+        $PAGE_TITLE = $page["title"];
     }
 }

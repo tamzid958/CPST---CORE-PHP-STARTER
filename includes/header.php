@@ -14,10 +14,13 @@ require_once "./config.inc.php";
     foreach ($CSS_FRAMEWORKS as $CSS) {
         echo "<link href='" . $CSS['url'] . "' rel='stylesheet' integrity='" . $CSS['integrity'] . "' crossorigin='" . $CSS['crossorigin'] . "'>";
     }
+    foreach ($WWWROOT_CSS as $CSS) {
+        echo "<link href='" . $CSS . "' rel='stylesheet'>";
+    }
     ?>
 
     <link href="<?php echo $CSS_PATH ?>" type="text/css" rel="stylesheet" />
-    <title><?php echo $APP_NAME . " | " . $title ?></title>
+    <title><?php echo $APP_NAME . " | " . $PAGE_TITLE ?></title>
 </head>
 
 <main>
@@ -31,16 +34,16 @@ require_once "./config.inc.php";
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link <?php echo ($nav_active == $pages_array["index"]["slug"]) ? 'active' : '' ?>" href="<?php echo $pages_array["index"]["slug"] ?>">Home</a>
+                        <a class="nav-link <?php echo ($NAV_ACTIVE == $pages_array["index"]["slug"]) ? 'active' : '' ?>" href="<?php echo $pages_array["index"]["slug"] ?>">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  <?php echo ($nav_active == $pages_array["about"]["slug"]) ? 'active' : '' ?>" href="<?php echo $pages_array["about"]["slug"] ?>">About</a>
+                        <a class="nav-link  <?php echo ($NAV_ACTIVE == $pages_array["about"]["slug"]) ? 'active' : '' ?>" href="<?php echo $pages_array["about"]["slug"] ?>">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  <?php echo ($nav_active == $pages_array["login"]["slug"]) ? 'active' : '' ?>" href="<?php echo $pages_array["login"]["slug"] ?>">Login</a>
+                        <a class="nav-link  <?php echo ($NAV_ACTIVE == $pages_array["login"]["slug"]) ? 'active' : '' ?>" href="<?php echo $pages_array["login"]["slug"] ?>">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  <?php echo ($nav_active == $pages_array["register"]["slug"]) ? 'active' : '' ?>" href="<?php echo $pages_array["register"]["slug"] ?>">Register</a>
+                        <a class="nav-link  <?php echo ($NAV_ACTIVE == $pages_array["register"]["slug"]) ? 'active' : '' ?>" href="<?php echo $pages_array["register"]["slug"] ?>">Register</a>
                     </li>
                 </ul>
             </div>
