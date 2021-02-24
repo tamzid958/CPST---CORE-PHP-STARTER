@@ -18,8 +18,6 @@ require_once "./config.inc.php";
         echo "<link href='$CSS' rel='stylesheet'>";
     }
     ?>
-
-    <link href="<?php echo $CSS_PATH ?>" type="text/css" rel="stylesheet" />
     <title><?php echo $APP_NAME . " | " . $PAGE_TITLE ?></title>
 </head>
 

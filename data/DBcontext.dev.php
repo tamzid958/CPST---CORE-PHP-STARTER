@@ -8,12 +8,18 @@ class DBcontext
     protected $query_closed = TRUE;
     public $query_count = 0;
 
+
+    //before production create a copy of this file, inside this folder and replace null with your own database connection variable//
+    //rename it to DBcontext.pro.php and inside config.inc.php set  $PRODUCTION_MODE=false
     public function __construct($dbhost = null, $dbuser = null, $dbpass = null, $dbname = null, $charset = 'utf8')
     {
+        //remove this block before production//
         $dbhost = $GLOBALS["SERVER_NAME"];
         $dbuser = $GLOBALS["SERVER_USER_NAME"];
         $dbpass = $GLOBALS["SERVER_PASSWORD"];
         $dbname = $GLOBALS["DATABASE_NAME"];
+        //remove this block before production//
+
 
         $this->connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
         if ($this->connection->connect_error) {
