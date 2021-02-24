@@ -1,10 +1,10 @@
 <?php
 class UserModel
 {
-    private string $username;
-    private string $email;
+    private string $username; //unique
+    private string $email; //unique
     private string $password;
-    private string $token;
+    private string $token; //unique
     private int $userrole;
 
     function set_username($username)
