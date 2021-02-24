@@ -9,9 +9,9 @@ class UserController extends DBcontext
             $email = $_POST["email"];
             $pass = $_POST["password"];
             if (!$email || !$pass) {
-                header("Location:login");
+                header("Location:" . $GLOBALS["pages_array"]["login"]["slug"]);
             } else {
-                header("Location:dashboard");
+                header("Location:" . $GLOBALS["pages_array"]["dashboard"]["slug"]);
             }
         }
     }
@@ -24,7 +24,7 @@ class UserController extends DBcontext
             $pass = $_POST["password"];
 
             if (!$username || !$email || !$pass) {
-                header("Location:register");
+                header("Location:" . $GLOBALS["pages_array"]["register"]["slug"]);
             } else {
                 $newuser = new UserModel();
 
@@ -41,14 +41,13 @@ class UserController extends DBcontext
                 $newuser->get_userrole();
 
 
-                header("Location:login");
+                header("Location:" . $GLOBALS["pages_array"]["login"]["slug"]);
             }
         }
     }
 
     function Dashboard()
     {
-
         $query = "SELECT * FROM users";
         $users = parent::query($query)->fetchAll();
         parent::close();

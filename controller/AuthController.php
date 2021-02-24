@@ -3,21 +3,23 @@
 class AuthController extends DBcontext
 {
 
-    static function logout()
+    function logout()
     {
-        $past = time() - 86400 * 30 * 30;
-        foreach ($_COOKIE as $key => $value) {
-            setcookie($key, $value, $past, '/');
+        if ($_POST) {
+            $past = time() - 86400 * 30 * 30;
+            foreach ($_COOKIE as $key => $value) {
+                setcookie($key, $value, $past, '/');
+            }
+            $helper = array_keys($_SESSION);
+            foreach ($helper as $key) {
+                unset($_SESSION[$key]);
+            }
+            session_destroy();
+            header("Location:" . $GLOBALS["pages_array"]["login"]["slug"]);
         }
-        $helper = array_keys($_SESSION);
-        foreach ($helper as $key) {
-            unset($_SESSION[$key]);
-        }
-        session_destroy();
-        header("Location:login.php");
     }
 
-    static function login($email, $password)
+    function login($email, $password)
     {
         if (!$password || !$email) {
             return false;
@@ -36,7 +38,7 @@ class AuthController extends DBcontext
         return true;
     }
 
-    static function CurrentUser()
+    function CurrentUser()
     {
         $current_user_token = $_COOKIE["ackqwtoken"];
         if (!$current_user_token) {

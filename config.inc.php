@@ -10,6 +10,8 @@ $SERVER_USER_NAME = "root";
 $SERVER_PASSWORD = "";
 $DATABASE_NAME = "greenlife";
 
+$HTACCESS_ENABLED = false;
+
 $CSS_FRAMEWORKS = array(
     "bootstrap@5.0.0" => array(
         "url" => "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css",
@@ -46,11 +48,10 @@ $MODEL = "model/CoreModel.php";
 $ROUTE = "route/route.php";
 $DBCONTEXT = "data/DBcontext.dev.php";
 
-
+require_once $ROUTE;
 require_once $DBCONTEXT;
 require_once $MODEL;
 require_once $CONTROLLER;
-require_once $ROUTE;
 
 
 $nav_active = $title = basename($_SERVER['REQUEST_URI']);
