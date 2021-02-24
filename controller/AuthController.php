@@ -41,6 +41,9 @@ class AuthController extends DBcontext
 
         $current_user = parent::query($query)->fetchArray();
 
+        if (!$current_user) {
+            return false;
+        }
         return $current_user;
     }
 }
