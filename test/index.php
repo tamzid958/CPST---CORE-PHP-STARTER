@@ -16,7 +16,7 @@ require_once "../config.inc.php";
         echo "<link href='" . $CSS['url'] . "' rel='stylesheet' integrity='" . $CSS['integrity'] . "' crossorigin='" . $CSS['crossorigin'] . "'>";
     }
     foreach ($WWWROOT_CSS as $CSS) {
-        echo "<link href='" . $CSS . "' rel='stylesheet'>";
+        echo "<link href='../$CSS' rel='stylesheet'>";
     }
     ?>
     <title>TEST PAGE</title>
@@ -50,7 +50,7 @@ foreach ($JS_FRAMEWORKS as $JS) {
     echo "<script src='" . $JS["url"] . "' integrity='" . $JS["integrity"] . "' crossorigin='" . $JS["crossorigin"] . "'></script>";
 }
 foreach ($WWWROOT_JS as $JS) {
-    echo "<script src='$JS'></script>";
+    echo "<script src='../$JS'></script>";
 }
 ?>
 

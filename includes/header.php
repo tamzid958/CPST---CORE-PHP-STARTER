@@ -15,7 +15,7 @@ require_once "./config.inc.php";
         echo "<link href='" . $CSS['url'] . "' rel='stylesheet' integrity='" . $CSS['integrity'] . "' crossorigin='" . $CSS['crossorigin'] . "'>";
     }
     foreach ($WWWROOT_CSS as $CSS) {
-        echo "<link href='" . $CSS . "' rel='stylesheet'>";
+        echo "<link href='$CSS' rel='stylesheet'>";
     }
     ?>
 
