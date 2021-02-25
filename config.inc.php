@@ -10,11 +10,12 @@ $HTACCESS_ENABLED = false;
 
 if ($DEVELOPMENT_MODE) {
     error_reporting(E_ALL);
-
-    $SERVER_NAME = "localhost";
-    $SERVER_USER_NAME = "root";
-    $SERVER_PASSWORD = "";
-    $DATABASE_NAME = "greenlife";
+    $DBCONFIG = array(
+        "SERVER_NAME" => "localhost",
+        "SERVER_USER_NAME" => "root",
+        "SERVER_PASSWORD" => "",
+        "DATABASE_NAME" => "greenlife"
+    );
 } else {
     error_reporting(0);
 }
@@ -54,11 +55,11 @@ $WWWROOT_JS = array(
 );
 $IMG_PATH = "wwwroot/images/";
 
-require_once "route/route.php";
-require_once ($DEVELOPMENT_MODE) ? "data/DBcontext.dev.php" : "data/DBcontext.pro.php";
-require_once "model/CoreModel.php";
-require_once "controller/CoreController.php";
-
+include "route/route.php";
+include ($DEVELOPMENT_MODE) ? "data/DBcontext.dev.php" : "data/DBcontext.pro.php";
+include "model/CoreModel.php";
+include "controller/CoreController.php";
+include "service/CoreService.php";
 
 $NAV_ACTIVE = $PAGE_TITLE = basename($_SERVER['REQUEST_URI']);
 foreach ($pages_array as $page) {

@@ -1,7 +1,6 @@
 <?php
 // if htaccess is enabled in your local machine. set value of HTACCESS_ENABLED true in config.ing.php
 // include new pages in if condition if HTACCESS_ENABLED is enabled else include new pages in else condition
-
 if ($HTACCESS_ENABLED) {
 
     $pages_array = array(

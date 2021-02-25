@@ -4,7 +4,7 @@
 if (isset($_POST["button"])) {
 }
 
-class HomeController extends DBcontext
+class HomeController extends DB\DBcontext
 {
     public $err_invalid = "";
     public $has_error = false;

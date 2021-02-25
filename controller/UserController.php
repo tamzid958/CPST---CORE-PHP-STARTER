@@ -1,6 +1,6 @@
 <?php
 
-class UserController extends DBcontext
+class UserController extends DB\DBcontext
 {
 
     function Login()

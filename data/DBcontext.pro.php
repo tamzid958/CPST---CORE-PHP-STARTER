@@ -1,4 +1,7 @@
 <?php
+
+namespace DB;
+
 class DBcontext
 {
 
@@ -12,7 +15,7 @@ class DBcontext
 
     public function __construct($dbhost = null, $dbuser = null, $dbpass = null, $dbname = null, $charset = 'utf8')
     {
-        $this->connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+        $this->connection = new \mysqli($dbhost, $dbuser, $dbpass, $dbname);
         if ($this->connection->connect_error) {
             $this->error('Failed to connect to MySQL - ' . $this->connection->connect_error);
         }

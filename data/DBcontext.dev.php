@@ -1,4 +1,7 @@
 <?php
+
+namespace DB;
+
 class DBcontext
 {
 
@@ -14,14 +17,14 @@ class DBcontext
     public function __construct($dbhost = null, $dbuser = null, $dbpass = null, $dbname = null, $charset = 'utf8')
     {
         //remove this block before production in DBcontext.pro.php//
-        $dbhost = $GLOBALS["SERVER_NAME"];
-        $dbuser = $GLOBALS["SERVER_USER_NAME"];
-        $dbpass = $GLOBALS["SERVER_PASSWORD"];
-        $dbname = $GLOBALS["DATABASE_NAME"];
+        $dbhost = $GLOBALS["DBCONFIG"]["SERVER_NAME"];
+        $dbuser = $GLOBALS["DBCONFIG"]["SERVER_USER_NAME"];
+        $dbpass = $GLOBALS["DBCONFIG"]["SERVER_PASSWORD"];
+        $dbname = $GLOBALS["DBCONFIG"]["DATABASE_NAME"];
         //remove this block before production in DBcontext.pro.php//
 
 
-        $this->connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+        $this->connection = new \mysqli($dbhost, $dbuser, $dbpass, $dbname);
         if ($this->connection->connect_error) {
             $this->error('Failed to connect to MySQL - ' . $this->connection->connect_error);
         }

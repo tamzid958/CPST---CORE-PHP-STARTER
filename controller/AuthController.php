@@ -1,6 +1,6 @@
 <?php
 
-class AuthController extends DBcontext
+class AuthController extends DB\DBcontext
 {
 
     function logout()

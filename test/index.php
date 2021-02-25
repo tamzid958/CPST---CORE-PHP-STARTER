@@ -1,5 +1,5 @@
 <?php
-require_once "../config.inc.php";
+include "../config.inc.php";
 ?>
 
 <!DOCTYPE html>
@@ -39,10 +39,10 @@ require_once "../config.inc.php";
         </div>
     </nav>
 
-<?php
+    <?php
 
-new HomeController();
-?>
+    new HomeController();
+    ?>
 </body>
 <footer class="border-top footer text-muted">
     <div class="container">
