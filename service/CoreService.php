@@ -1,11 +1,12 @@
 <?php
 
-namespace Service;
+namespace Service {
 
-$files = dirname(__FILE__);
-foreach (glob($files . '/*.php') as $file) {
-    $file = explode('/', $file)[1];
-    if ($file != "CoreService.php") {
-        include $file;
+    $files = dirname(__FILE__);
+    foreach (glob($files . '/*.php') as $file) {
+        $file = explode('/', $file)[1];
+        if ($file != "CoreService.php") {
+            require $file;
+        }
     }
 }

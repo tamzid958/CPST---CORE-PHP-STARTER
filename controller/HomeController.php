@@ -1,9 +1,4 @@
 <?php
-
-
-if (isset($_POST["button"])) {
-}
-
 class HomeController extends DB\DBcontext
 {
     public $err_invalid = "";

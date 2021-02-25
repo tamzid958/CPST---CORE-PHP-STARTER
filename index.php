@@ -2,7 +2,7 @@
 include "includes/header.php";
 
 $homeController = new HomeController();
-//var_dump($homeController->fetchUser());
+var_dump($homeController->fetchUser());
 //debug mode -> echo var_dump
 ?>
 
