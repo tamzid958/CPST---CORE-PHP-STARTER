@@ -21,23 +21,21 @@ class AuthController extends DBcontext
 
     function login($email, $password)
     {
-        if ($_POST) {
-            if (!$password || !$email) {
-                return false;
-            }
-
-            $password = md5($password);
-            $query = "SELECT `token` from `users` WHERE `email`='$email' AND `password`='$password'";
-            $user = parent::query($query)->fetchArray();
-
-            if (!$user) {
-                return false;
-            }
-
-            $_SESSION["ackqwtoken"] = $user["token"];
-            setcookie("ackqwtoken", $user["token"], time() + (86400 * 30 * 30), "/");
-            return true;
+        if (!$password || !$email) {
+            return false;
         }
+
+        $password = md5($password);
+        $query = "SELECT `token` from `users` WHERE `email`='$email' AND `password`='$password'";
+        $user = parent::query($query)->fetchArray();
+
+        if (!$user) {
+            return false;
+        }
+
+        $_SESSION["ackqwtoken"] = $user["token"];
+        setcookie("ackqwtoken", $user["token"], time() + (86400 * 30 * 30), "/");
+        return true;
     }
 
     function CurrentUser()
