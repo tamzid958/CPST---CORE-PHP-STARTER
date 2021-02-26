@@ -5,7 +5,6 @@ class UserModel
     public string $email; //unique
     private string $password;
     private string $token; //unique
-    public int $userrole;
 
     function set_username($username)
     {
@@ -53,13 +52,5 @@ class UserModel
         $this->token = base64_encode($this->token);
         $this->token = md5($this->token);
         return $this->token;
-    }
-    function set_userrole($userrole)
-    {
-        $this->userrole = $userrole;
-    }
-    function get_userrole()
-    {
-        return $this->userrole;
     }
 }
