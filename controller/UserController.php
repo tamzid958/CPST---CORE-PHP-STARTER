@@ -13,8 +13,6 @@ class UserController extends DB\DBcontext
                 } else {
                     header("Location:" . $GLOBALS["pages_array"]["dashboard"]["slug"]);
                 }
-            } else {
-                header("UNSECURED DATA");
             }
         }
     }
@@ -44,8 +42,6 @@ class UserController extends DB\DBcontext
 
                     header("Location:" . $GLOBALS["pages_array"]["login"]["slug"]);
                 }
-            } else {
-                header("UNSECURED DATA");
             }
         }
     }
