@@ -6,6 +6,9 @@ class UserController extends DB\DBcontext
     {
         if ($_POST) {
             if (hash_equals($_SESSION['csrf_token'], $_POST['csrf'])) {
+
+                unset($_SESSION["csrf_token"]);
+
                 $email = $_POST["email"];
                 $pass = $_POST["password"];
                 if (!$email || !$pass) {
@@ -20,6 +23,9 @@ class UserController extends DB\DBcontext
     {
         if ($_POST) {
             if (hash_equals($_SESSION['csrf_token'], $_POST['csrf'])) {
+
+                unset($_SESSION["csrf_token"]);
+
                 $username = $_POST["username"];
                 $email = $_POST["email"];
                 $pass = $_POST["password"];
