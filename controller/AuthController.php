@@ -20,17 +20,12 @@ class AuthController extends DB\DBcontext
 
     function login($email, $password)
     {
-        if (!$password || !$email) {
-            return false;
-        }
+        if (!$password || !$email) return false;
 
         $password = md5($password);
         $query = "SELECT `token` from `users` WHERE `email`='$email' AND `password`='$password'";
         $user = parent::query($query)->fetchArray();
-
-        if (!$user) {
-            return false;
-        }
+        if (!$user) return false;
 
         $_SESSION["ackqwtoken"] = $user["token"];
         setcookie("ackqwtoken", $user["token"], time() + (86400 * 30 * 30), "/");
@@ -40,16 +35,12 @@ class AuthController extends DB\DBcontext
     function CurrentUser()
     {
         $current_user_token = $_COOKIE["ackqwtoken"];
-        if (!$current_user_token) {
-            return false;
-        }
+        if (!$current_user_token) return false;
+
         $query = "SELECT * from `users` WHERE `token` = '$current_user_token' ";
-
         $current_user = parent::query($query)->fetchArray();
+        if (!$current_user) return false;
 
-        if (!$current_user) {
-            return false;
-        }
         return $current_user;
     }
 }
