@@ -1,6 +1,9 @@
 <?php
 
 namespace DB {
+
+    use \mysqli;
+
     class DBcontext
     {
 
@@ -10,20 +13,9 @@ namespace DB {
         protected $query_closed = TRUE;
         public $query_count = 0;
 
-
-        //before production create a copy of this file, inside this folder and replace null with your own database connection variable//
-        //rename that file DBcontext.pro.php and inside config.inc.php set  $DEVELOPMENT_MODE=false
-        public function __construct($dbhost = null, $dbuser = null, $dbpass = null, $dbname = null, $charset = 'utf8')
+        function __construct($dbhost =  DBCONFIG["SERVER_NAME"], $dbuser = DBCONFIG["SERVER_USER_NAME"], $dbpass = DBCONFIG["SERVER_PASSWORD"], $dbname = DBCONFIG["DATABASE_NAME"], $charset = 'utf8')
         {
-            //remove this block before production in DBcontext.pro.php//
-            $dbhost = DBCONFIG["SERVER_NAME"];
-            $dbuser = DBCONFIG["SERVER_USER_NAME"];
-            $dbpass = DBCONFIG["SERVER_PASSWORD"];
-            $dbname = DBCONFIG["DATABASE_NAME"];
-            //remove this block before production in DBcontext.pro.php//
-
-
-            $this->connection = new \mysqli($dbhost, $dbuser, $dbpass, $dbname);
+            $this->connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
             if ($this->connection->connect_error) {
                 $this->error('Failed to connect to MySQL - ' . $this->connection->connect_error);
             }
