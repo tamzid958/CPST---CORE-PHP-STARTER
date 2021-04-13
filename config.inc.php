@@ -17,7 +17,7 @@ const DBCONFIG = array(
     "SERVER_NAME" => "localhost",
     "SERVER_USER_NAME" => "root",
     "SERVER_PASSWORD" => "",
-    "DATABASE_NAME" => "ohms"
+    "DATABASE_NAME" => "php_start"
 );
 
 $CSS_FRAMEWORKS = array(
