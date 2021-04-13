@@ -1,7 +1,6 @@
 <?php
 class Route
 {
-
     const pages_array = array(
         'index' => array(
             'slug' => 'index.php',
