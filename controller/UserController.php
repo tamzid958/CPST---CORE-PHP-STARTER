@@ -1,62 +1,83 @@
 <?php
-class UserController extends DB\DBcontext
-{
 
-    function Login()
+namespace Controller {
+
+    use Model\UserModel;
+    use Service\SignInManager;
+    use Route;
+
+    class UserController
     {
-        if ($_POST) {
-            if (hash_equals($_SESSION['csrf_token'], $_POST['csrf'])) {
+        private SignInManager $sign;
+        private UserModel $user;
+        function __construct()
+        {
+            $this->sign = new SignInManager();
+            $this->user = new UserModel();
 
-                unset($_SESSION["csrf_token"]);
+            if ($this->sign->CurrentUser()) {
+                header('Location: ' . Route::pages_array["dashboard"]["slug"]);
+            }
+        }
 
+        function login()
+        {
+            if ($_POST) {
                 $email = $_POST["email"];
                 $pass = $_POST["password"];
-                if (!$email || !$pass) {
-                    header("Location:" . $GLOBALS["pages_array"]["login"]["slug"]);
+                $remember_me = $_POST["remember_me"];
+                if ($this->sign->Login($email, $pass, $remember_me)) {
+                    header("Location:" . Route::pages_array["dashboard"]["slug"]);
                 } else {
-                    header("Location:" . $GLOBALS["pages_array"]["dashboard"]["slug"]);
+                    array_push($GLOBALS["ERR_INVALIDS"], "invalid cardinalities");
                 }
             }
         }
-    }
-    function Register()
-    {
-        if ($_POST) {
-            if (hash_equals($_SESSION['csrf_token'], $_POST['csrf'])) {
-
-                unset($_SESSION["csrf_token"]);
-
+        function register()
+        {
+            if ($_POST) {
                 $username = $_POST["username"];
                 $email = $_POST["email"];
-                $pass = $_POST["password"];
+                $password = $_POST["password"];
+                $name = $_POST["name"];
+                $gender = $_POST["gender"];
+                $dob = $_POST["dob"];
 
-                if (!$username || !$email || !$pass) {
-                    header("Location:" . $GLOBALS["pages_array"]["register"]["slug"]);
+                if ($this->user->create_user($username, $email, $name, $gender, $dob, $password, $email, $this->user->patient_role_id)) {
+                    header("Location:" . Route::pages_array["login"]["slug"]);
                 } else {
-                    $newuser = new UserModel();
-
-                    $newuser->set_username($username);
-                    $newuser->set_email($email);
-                    $newuser->set_password($pass);
-                    $newuser->set_token($email);
-
-                    $newuser->get_username();
-                    $newuser->get_email();
-                    $newuser->get_password();
-                    $newuser->get_token();
-
-
-                    header("Location:" . $GLOBALS["pages_array"]["login"]["slug"]);
+                    array_push($GLOBALS["ERR_INVALIDS"], "all fields are required");
                 }
             }
         }
-    }
-
-    function Dashboard()
-    {
-        $query = "SELECT * FROM users";
-        $users = parent::query($query)->fetchAll();
-        parent::close();
-        return $users;
+        function forgetPassword()
+        {
+            if ($_POST) {
+                $email = $_POST["email"];
+                $token = $this->user->get_user_token_by_email($email);
+                if ($token) {
+                    header("Location:" . Route::pages_array["resetpassword"]["slug"] . "?reset_token=" . $token);
+                } else {
+                    array_push($GLOBALS["ERR_INVALIDS"], "email doesn't exist in our database");
+                }
+            }
+        }
+        function resetpassword()
+        {
+            if ($_POST) {
+                $token = $_POST["reset_token"];
+                $password = $_POST["password"];
+                $confirm_password = $_POST["confirm_password"];
+                if ($password == $confirm_password) {
+                    if ($this->sign->Resetpassword($token, $password)) {
+                        header("Location:" . Route::pages_array["login"]["slug"]);
+                    } else {
+                        array_push($GLOBALS["ERR_INVALIDS"], "error occured");
+                    }
+                } else {
+                    array_push($GLOBALS["ERR_INVALIDS"], "passsword not matched");
+                }
+            }
+        }
     }
 }

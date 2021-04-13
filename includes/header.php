@@ -25,23 +25,23 @@ include "./config.inc.php";
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="<?php echo $pages_array["index"]["slug"] ?>">Navbar</a>
+            <a class="navbar-brand" href="<?php echo Route::pages_array["index"]["slug"] ?>">Navbar</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link <?php echo ($NAV_ACTIVE == $pages_array["index"]["slug"]) ? 'active' : '' ?>" href="<?php echo $pages_array["index"]["slug"] ?>">Home</a>
+                        <a class="nav-link <?php echo ($NAV_ACTIVE == Route::pages_array["index"]["slug"]) ? 'active' : '' ?>" href="<?php echo Route::pages_array["index"]["slug"] ?>">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  <?php echo ($NAV_ACTIVE == $pages_array["about"]["slug"]) ? 'active' : '' ?>" href="<?php echo $pages_array["about"]["slug"] ?>">About</a>
+                        <a class="nav-link  <?php echo ($NAV_ACTIVE == Route::pages_array["about"]["slug"]) ? 'active' : '' ?>" href="<?php echo Route::pages_array["about"]["slug"] ?>">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  <?php echo ($NAV_ACTIVE == $pages_array["login"]["slug"]) ? 'active' : '' ?>" href="<?php echo $pages_array["login"]["slug"] ?>">Login</a>
+                        <a class="nav-link  <?php echo ($NAV_ACTIVE == Route::pages_array["login"]["slug"]) ? 'active' : '' ?>" href="<?php echo Route::pages_array["login"]["slug"] ?>">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  <?php echo ($NAV_ACTIVE == $pages_array["register"]["slug"]) ? 'active' : '' ?>" href="<?php echo $pages_array["register"]["slug"] ?>">Register</a>
+                        <a class="nav-link  <?php echo ($NAV_ACTIVE == Route::pages_array["register"]["slug"]) ? 'active' : '' ?>" href="<?php echo Route::pages_array["register"]["slug"] ?>">Register</a>
                     </li>
                 </ul>
             </div>

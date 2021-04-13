@@ -1,15 +1,25 @@
 <?php
-class HomeController extends DB\DBcontext
-{
-    public $err_invalid = "";
-    public $has_error = false;
 
+namespace Controller {
 
-    function fetchUser()
+    use Model\UserModel;
+
+    class HomeController
     {
-        $query = "SELECT * FROM users";
-        $users = parent::query($query)->fetchAll();
-        parent::close();
-        return $users;
+        private UserModel $user;
+
+        function __construct()
+        {
+            $this->user = new UserModel();
+        }
+        function index()
+        {
+            $doctors = $this->user->get_all_users();
+            if ($doctors) {
+                return $doctors;
+            } else {
+                exit("<p class='text-center'>no user in database</p>");
+            }
+        }
     }
 }
